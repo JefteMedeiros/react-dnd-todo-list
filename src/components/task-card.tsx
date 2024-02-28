@@ -11,6 +11,7 @@ export function TaskCard({ task }: Props) {
   const [{ isDragging }, drag] = useDrag({
     item: {
       type: itemTypes.CARD,
+      id: task.id,
     },
     type: itemTypes.CARD,
     collect: (monitor) => ({

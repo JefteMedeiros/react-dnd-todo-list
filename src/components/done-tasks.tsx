@@ -1,6 +1,7 @@
 import { Task } from "../types/task"
 
 import { TaskCard } from "./task-card"
+import { TaskTarget } from "./task-target"
 
 interface Props {
   tasks: Task[]
@@ -11,6 +12,7 @@ export function DoneTasks({ tasks }: Props) {
     <div className="space-y-4 bg-emerald-400 min-w-80 p-4 rounded-md shadow-md">
       <h2 className="text-2xl font-bold text-white">Done tasks</h2>
       <div className="border-white rounded-full border-[1px]" />
+      <TaskTarget />
       <div className="flex flex-col gap-4">
         {tasks
           .filter((task) => task.isDone)
