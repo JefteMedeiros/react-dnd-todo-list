@@ -32,7 +32,7 @@ export function TaskTarget({ children, listType }: Props) {
   })
 
   return (
-    <div className="flex-1 min-h-[200px]" ref={drop}>
+    <div className="flex-1 flex flex-col gap-4 min-h-[200px]" ref={drop}>
       {children}
     </div>
   )

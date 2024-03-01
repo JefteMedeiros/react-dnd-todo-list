@@ -24,13 +24,11 @@ export function TaskList({ title, bgColor, listType }: Props) {
       <h2 className="text-2xl font-bold text-white">{title}</h2>
       <div className="border-white rounded-full border-[1px]" />
       <TaskTarget listType={listType}>
-        <div className="flex flex-col gap-4">
-          {tasks
-            .filter((task) => task.isDone === isTaskDone)
-            .map((doneTask) => {
-              return <TaskCard task={doneTask} key={doneTask.id} />
-            })}
-        </div>
+        {tasks
+          .filter((task) => task.isDone === isTaskDone)
+          .map((doneTask) => {
+            return <TaskCard task={doneTask} key={doneTask.id} />
+          })}
       </TaskTarget>
     </div>
   )
