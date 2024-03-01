@@ -14,8 +14,7 @@ interface Props {
 export function TaskTarget({ children, listType }: Props) {
   const { handleMoveTask } = useTasks()
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [{ isOver }, drop] = useDrop({
+  const [, drop] = useDrop({
     accept: itemTypes.CARD,
     drop: (item: Task) => {
       if (listType === "wip") {
