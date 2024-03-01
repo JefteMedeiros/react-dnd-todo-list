@@ -15,7 +15,7 @@ export function TaskCard({ task }: Props) {
     },
     type: itemTypes.CARD,
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
   })
 

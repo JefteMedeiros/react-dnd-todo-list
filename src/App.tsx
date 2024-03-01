@@ -1,6 +1,5 @@
 import { DndWrapper } from "./components/dnd-wrapper"
-import { DoneTasks } from "./components/done-tasks"
-import { WipTasks } from "./components/wip-taks"
+import { TaskList } from "./components/task-list"
 import { TasksProvider } from "./store/tasks-context"
 
 function App() {
@@ -13,8 +12,16 @@ function App() {
               React DnD testing app
             </h1>
             <div className="flex gap-4 justify-center">
-              <WipTasks />
-              <DoneTasks />
+              <TaskList
+                title="W.I.P Tasks"
+                listType="wip"
+                bgColor="bg-red-400"
+              />
+              <TaskList
+                title="Done tasks"
+                listType="done"
+                bgColor="bg-emerald-400"
+              />
             </div>
           </div>
         </TasksProvider>

@@ -1,23 +1,39 @@
+import { ReactNode } from "react"
 import { useDrop } from "react-dnd"
 
+import { useTasks } from "../store/tasks-context"
+import { ListType } from "../types/listType"
+import { Task } from "../types/task"
 import itemTypes from "../utils/itemTypes"
 
-// interface Props {}
+interface Props {
+  children: ReactNode
+  listType: ListType
+}
 
-export function TaskTarget() {
+export function TaskTarget({ children, listType }: Props) {
+  const { handleMoveTask } = useTasks()
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [{ isOver }, drop] = useDrop({
     accept: itemTypes.CARD,
-    drop: (item) => console.log("dropped ", item),
+    drop: (item: Task) => {
+      if (listType === "wip") {
+        handleMoveTask(item.id, false)
+      }
+
+      if (listType === "done") {
+        handleMoveTask(item.id, true)
+      }
+    },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   })
 
-  const styles = isOver ? "bg-yellow-900" : "bg-purple-500"
-
   return (
-    <div ref={drop} className={styles + " w-full p-2 rounded-md min-h-[400px]"}>
-      Drop here
+    <div className="flex-1 min-h-[200px]" ref={drop}>
+      {children}
     </div>
   )
 }
