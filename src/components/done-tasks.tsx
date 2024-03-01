@@ -1,13 +1,11 @@
-import { Task } from "../types/task"
+import { useTasks } from "../store/tasks-context"
 
 import { TaskCard } from "./task-card"
 import { TaskTarget } from "./task-target"
 
-interface Props {
-  tasks: Task[]
-}
+export function DoneTasks() {
+  const { tasks } = useTasks()
 
-export function DoneTasks({ tasks }: Props) {
   return (
     <div className="space-y-4 bg-emerald-400 min-w-80 p-4 rounded-md shadow-md">
       <h2 className="text-2xl font-bold text-white">Done tasks</h2>
